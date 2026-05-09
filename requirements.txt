@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+streamlit
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+sentence-transformers
+transformers
+torch
+spacy
+pdfplumber
+PyMuPDF
+python-multipart
+joblib

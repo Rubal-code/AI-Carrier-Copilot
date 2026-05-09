@@ -1,0 +1,48 @@
+# Virtual Environment
+venv/
+env/
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# Environment Variables
+.env
+
+# Uploaded Files
+uploads/
+
+# ML Models
+ml/saved_models/
+
+# Logs
+*.log
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
+
+# PyTorch
+*.pt
+*.pth
+
+# TensorFlow
+*.h5
+
+# Build Files
+dist/
+build/
+
+# Temporary files
+temp/
+tmp/
