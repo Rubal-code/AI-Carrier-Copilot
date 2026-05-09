@@ -3,8 +3,8 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import streamlit as st 
-
 from backend.services.parser import extract_text
+from backend.services.skill_extractor import extract_skills
 
 st.title("AI Resume Analyzer")
 
@@ -22,4 +22,12 @@ if uploaded_file is not None:
 
     text=extract_text(save_path)
     st.text_area("Extracted Text", value=text, height=300)
+
+    skills = extract_skills(text)
+    st.subheader("Extracted Skills")
+    if skills:
+        st.write(", ".join(skills))
+    else:
+        st.warning("No skills found in the resume.")
     
+    # job description section
