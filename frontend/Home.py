@@ -5,6 +5,9 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import streamlit as st 
 from backend.services.parser import extract_text
 from backend.services.skill_extractor import extract_skills
+from backend.services.ats import calculate_ats_score
+
+st.set_page_config(page_title="AI Resume Analyzer", layout="centered")
 
 st.title("AI Resume Analyzer")
 
@@ -31,3 +34,14 @@ if uploaded_file is not None:
         st.warning("No skills found in the resume.")
     
     # job description section
+    st.subheader("Job Description")
+    job_desc = st.text_area("Paste the job description here", height=200)
+    if job_desc:
+
+        ats_score = calculate_ats_score(text, job_desc)
+
+        st.subheader("ATS Match Score")
+
+        st.progress(int(ats_score))
+
+        st.write(f"ATS Score: {ats_score}%")

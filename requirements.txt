@@ -14,3 +14,4 @@ pdfplumber
 PyMuPDF
 python-multipart
 joblib
+sentence-transformers
