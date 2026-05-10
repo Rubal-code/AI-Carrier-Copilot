@@ -15,3 +15,5 @@ PyMuPDF
 python-multipart
 joblib
 sentence-transformers
+re
+nltk
