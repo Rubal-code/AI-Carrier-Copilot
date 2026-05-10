@@ -6,6 +6,7 @@ import streamlit as st
 from backend.services.parser import extract_text
 from backend.services.skill_extractor import extract_skills
 from backend.services.ats import calculate_ats_score
+from backend.services.predict import predict_role
 
 st.set_page_config(page_title="AI Resume Analyzer", layout="centered")
 
@@ -45,3 +46,7 @@ if uploaded_file is not None:
         st.progress(int(ats_score))
 
         st.write(f"ATS Score: {ats_score}%")
+
+        role=predict_role(skills)
+        st.subheader("Predicted Job Role")
+        st.success(role)
