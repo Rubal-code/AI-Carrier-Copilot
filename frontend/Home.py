@@ -7,6 +7,7 @@ from backend.services.parser import extract_text
 from backend.services.skill_extractor import extract_skills
 from backend.services.ats import calculate_ats_score
 from backend.services.predict import predict_role
+from backend.services.skill_match import (skill_match_percentage)
 
 st.set_page_config(page_title="AI Resume Analyzer", layout="centered")
 
@@ -18,6 +19,8 @@ uploaded_file = st.file_uploader(
 )
 
 if uploaded_file is not None:
+
+    os.makedirs("uploads", exist_ok=True)
     save_path = os.path.join("uploads", uploaded_file.name)
     
     with open(save_path, "wb") as f:
@@ -50,3 +53,17 @@ if uploaded_file is not None:
         role=predict_role(skills)
         st.subheader("Predicted Job Role")
         st.success(role)
+
+        jd_skills = job_desc.lower().split()
+
+        match_score = skill_match_percentage(
+            skills,
+            jd_skills
+        )
+
+        st.subheader("Skill Match")
+
+        st.metric(
+            "Skill Match %",
+            f"{match_score}%"
+        )
