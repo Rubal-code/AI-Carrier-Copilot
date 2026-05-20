@@ -16,7 +16,7 @@ from backend.services.skill_extractor import extract_skills
 from backend.services.ats import calculate_ats_score
 from backend.services.predict import predict_role
 from backend.services.skill_match import skill_match_percentage
-
+from backend.services.resume_classifer import classify_resume
 
 # Page Config
 st.set_page_config(
@@ -146,3 +146,7 @@ if uploaded_file is not None:
 
         else:
             st.error("Needs Improvement")
+        
+        resume_category = classify_resume(skills)
+        st.subheader("Resume Category")
+        st.info(resume_category)
