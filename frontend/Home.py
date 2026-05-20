@@ -134,7 +134,15 @@ if uploaded_file is not None:
 
         st.subheader("Skill Match")
 
-        st.metric(
-            label="Skill Match %",
-            value=f"{match_score}%"
-        )
+        # st.metric(
+        #     label="Skill Match %",
+        #     value=f"{match_score}%"
+        # )
+        if match_score >= 80:
+            st.success("Excellent Resume")
+
+        elif match_score >= 60:
+            st.warning("Good Resume")
+
+        else:
+            st.error("Needs Improvement")
